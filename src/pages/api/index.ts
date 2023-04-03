@@ -1,7 +1,7 @@
 import { NowRequest, NowResponse } from "@vercel/node";
-import { getStats } from "../utils/getStats";
-import { getSuccessSvg, getErrorSvg } from "../utils/getSvg";
-import { getTheme } from "../utils/getTheme";
+import { getStats } from "../../../utils/getStats";
+import { getErrorSvg, getSuccessSvg } from "../../../utils/getSvg";
+import { getTheme } from "../../../utils/getTheme";
 
 export default async (req: NowRequest, res: NowResponse) => {
   const { username, theme } = req.query;

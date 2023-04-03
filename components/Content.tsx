@@ -14,7 +14,7 @@ import BubbleChartIcon from "@material-ui/icons/BubbleChart";
 import ImageIcon from "@material-ui/icons/Image";
 import BorderColorIcon from "@material-ui/icons/BorderColor";
 import IconButton from "./IconButton";
-import { themes } from "@/pages/static/theme";
+import { themes } from "../static/theme";
 
 const ENDPOINT = "http://localhost:3000/";
 
