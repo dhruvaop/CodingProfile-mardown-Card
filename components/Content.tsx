@@ -165,6 +165,14 @@ function Content(): JSX.Element {
           >
             LeetCode Stats
           </Typography>
+          <Typography
+            color="primary"
+            align="center"
+            variant="body2"
+            style={{ marginTop: "10px", marginBottom: "10px" }}
+          >
+            Made by Pranshu Jain with ❤️
+          </Typography>
           <IconButton
             text="GitHub"
             icon={<GitHubIcon />}
