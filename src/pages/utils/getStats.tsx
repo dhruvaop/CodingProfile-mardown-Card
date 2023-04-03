@@ -21,7 +21,7 @@ export interface StatsResponse {
 
 export const getStats = async (username: string): Promise<StatsResponse> => {
   try {
-    const response = await axios.get(`${ENDPOINT}/${username}/`, {
+    const response = await axios.get(`${ENDPOINT}/${username}`, {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",

@@ -6,6 +6,8 @@ const useStyles = makeStyles((theme: any) => ({
   button: {
     marginRight: theme.spacing(1),
     textTransform: "none",
+    marginTop: "20px",
+    marginBottom: "20px",
   },
 }));
 

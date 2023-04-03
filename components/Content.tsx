@@ -16,7 +16,7 @@ import BorderColorIcon from "@material-ui/icons/BorderColor";
 import IconButton from "./IconButton";
 import { themes } from "@/pages/static/theme";
 
-const ENDPOINT = "https://leetcode-stats.vercel.app";
+const ENDPOINT = "http://localhost:3000/";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textFieldLabel: {
     color: theme.palette.primary.main,
+    marginRight: "30px",
   },
   textInput: {
     color: "white",
@@ -96,7 +97,7 @@ function Content(): JSX.Element {
   // onClick function for git button
   const gitOnClick = () => {
     window.open(
-      "https://github.com/JeremyTsaii/leetcode-stats",
+      "https://github.com/Pranshu321/coding-profiles",
       "_blank",
       "noopener, noreferrer"
     );
@@ -110,20 +111,25 @@ function Content(): JSX.Element {
     const username = getValue(nameRef);
     // User did not enter username
     if (username === "") {
-      setStatusText("Status: please enter username above");
+      setStatusText("Status : please enter username above");
       return;
     }
 
     axios
-      .get(`${ENDPOINT}/api?username=${username}&theme=${theme}`)
+      .get(`${ENDPOINT}/api?username=${username}&theme=${theme}`, {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
       .then((response) => {
         setSvg(response.data as string);
         setGenerated(true);
-        setStatusText("Status: successfully generated");
+        setStatusText("Status : successfully generated");
       })
       .catch(() => {
         setGenerated(false);
-        setStatusText(`Status: backend error occurred`);
+        setStatusText(`Status : backend error occurred`);
       });
   };
 
@@ -140,7 +146,7 @@ function Content(): JSX.Element {
   const mdCopyOnClick = () => {
     const username = getValue(nameRef);
     const imgUrl = `${ENDPOINT}/api?username=${username}&theme=${theme}`;
-    const redirectUrl = "https://github.com/JeremyTsaii/leetcode-stats";
+    const redirectUrl = "https://github.com/Pranshu321/coding-profiles";
     navigator.clipboard.writeText(
       `[![${username}'s LeetCode Stats](${imgUrl})](${redirectUrl})`
     );
@@ -172,6 +178,7 @@ function Content(): JSX.Element {
             autoComplete="off"
             label="Username"
             placeholder="Username"
+            style={{ width: "20rem" }}
             inputRef={nameRef}
             InputLabelProps={{
               shrink: true,
@@ -193,6 +200,7 @@ function Content(): JSX.Element {
             InputProps={{
               className: classes.textInput,
             }}
+            style={{ marginLeft: "30px" }}
           >
             {Object.keys(themes).map((themeX) => {
               const key = themeX as keyof typeof themes;
