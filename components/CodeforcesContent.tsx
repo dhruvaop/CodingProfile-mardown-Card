@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Content(): JSX.Element {
+function CodeforcesContent(): JSX.Element {
   const classes = useStyles();
 
   // Username
@@ -117,7 +117,7 @@ function Content(): JSX.Element {
     }
 
     axios
-      .get(`${ENDPOINT}/api?username=${username}&theme=${theme}`, {
+      .get(`${ENDPOINT}/api/codeforces?username=${username}&theme=${theme}`, {
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
@@ -138,7 +138,7 @@ function Content(): JSX.Element {
   const imgCopyOnClick = () => {
     const username = getValue(nameRef);
     navigator.clipboard.writeText(
-      `${ENDPOINT}/api?username=${username}&theme=${theme}`
+      `${ENDPOINT}/api/codeforces?username=${username}&theme=${theme}`
     );
     setImgCopied(true);
   };
@@ -164,7 +164,7 @@ function Content(): JSX.Element {
             variant="h2"
             className={classes.text}
           >
-            LeetCode Stats
+            Codeforces Stats
           </Typography>
           <Typography
             color="primary"
@@ -256,4 +256,4 @@ function Content(): JSX.Element {
   );
 }
 
-export default Content;
+export default CodeforcesContent;

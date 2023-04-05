@@ -1,7 +1,9 @@
 import { NowRequest, NowResponse } from "@vercel/node";
-import { getStats } from "../../../utils/getStats";
 import { getCodeforces } from "../../../utils/getCodeforces";
-import { getErrorSvg, getSuccessSvg } from "../../../utils/getSvg";
+import {
+  getErrorSvg,
+  getSuccessSvg,
+} from "../../../utils/Codeforces/getCodeforcesCard";
 import { getTheme } from "../../../utils/getTheme";
 
 export default async (req: NowRequest, res: NowResponse) => {
@@ -14,7 +16,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     if (!username) {
       // user did not enter username
       return res.send(
-        getErrorSvg("please enter a username (ex: username=leetcodeuser)")
+        getErrorSvg("please enter a username (ex: username=codeforcesUser)")
       );
     }
 
@@ -27,15 +29,17 @@ export default async (req: NowRequest, res: NowResponse) => {
       // user entered invalid theme
       return res.send(getErrorSvg("please enter a valid theme"));
     }
-    const stats = await getStats(user);
+    const stats = await getCodeforces(user);
 
-    if (stats.status === "success") {
+    if (stats.status === "OK") {
+      console.log("stats", stats);
+
       return res.send(
         getSuccessSvg({ stats, username: user, theme: userTheme })
       );
     } else {
       // user does not exist
-      return res.send(getErrorSvg(stats.message));
+      return res.send(getErrorSvg("User Not Exist"));
     }
   } catch {
     // unknown backend error
