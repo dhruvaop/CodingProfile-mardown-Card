@@ -31,7 +31,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function cf() {
+export default function Cf() {
   const classes = useStyles();
   return (
     <>
