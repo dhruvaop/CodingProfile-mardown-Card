@@ -3,7 +3,7 @@ import { getCodeforces } from "../../../utils/getCodeforces";
 import {
   getErrorSvg,
   getSuccessSvg,
-} from "../../../utils/Codeforces/getCodeforcesCard";
+} from "../../../utils/Cards/getCodeforcesCard";
 import { getTheme } from "../../../utils/getTheme";
 
 export default async (req: NowRequest, res: NowResponse) => {

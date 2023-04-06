@@ -4,7 +4,7 @@ const ENDPOINT = "https://competeapi.vercel.app/user/codechef";
 
 export interface StatsResponse {
   status: string;
-  username?: string;
+  _username?: string;
   rating?: string;
   rating_number?: number;
   country?: string;

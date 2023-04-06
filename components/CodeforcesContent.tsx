@@ -16,7 +16,7 @@ import BorderColorIcon from "@material-ui/icons/BorderColor";
 import IconButton from "./IconButton";
 import { themes } from "../static/theme";
 
-const ENDPOINT = "https://coding-profile.vercel.app/";
+const ENDPOINT = "https://coding-profile.vercel.app";
 // const ENDPOINT = "http://localhost:3000";
 
 const useStyles = makeStyles((theme) => ({
@@ -146,7 +146,7 @@ function CodeforcesContent(): JSX.Element {
   // onClick function for copy markdwn button
   const mdCopyOnClick = () => {
     const username = getValue(nameRef);
-    const imgUrl = `${ENDPOINT}/api?username=${username}&theme=${theme}`;
+    const imgUrl = `${ENDPOINT}/api/codeforces?username=${username}&theme=${theme}`;
     const redirectUrl = "https://github.com/Pranshu321/coding-profiles";
     navigator.clipboard.writeText(
       `[![${username}'s LeetCode Stats](${imgUrl})](${redirectUrl})`

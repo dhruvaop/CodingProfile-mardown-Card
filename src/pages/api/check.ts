@@ -1,9 +1,8 @@
 import { NowRequest, NowResponse } from "@vercel/node";
-import { getCodeforces } from "../../../utils/getCodeforces";
 import {
   getErrorSvg,
   getSuccessSvg,
-} from "../../../utils/Codeforces/getCodeforcesCard";
+} from "../../../utils/Cards/getCodeChefCards";
 import { getTheme } from "../../../utils/getTheme";
 import { getCodechef } from "../../../utils/getCodechef";
 
@@ -16,7 +15,9 @@ export default async (req: NowRequest, res: NowResponse) => {
   try {
     if (!username) {
       // user did not enter username
-      return res.send("Error");
+      return res.send(
+        getErrorSvg("please enter a username (ex: username=codeforcesUser)")
+      );
     }
 
     const user = username as string;
@@ -26,18 +27,20 @@ export default async (req: NowRequest, res: NowResponse) => {
 
     if (userTheme.value === "unknown") {
       // user entered invalid theme
-      return res.send("please enter a valid theme");
+      return res.send(getErrorSvg("please enter a valid theme"));
     }
     const stats = await getCodechef(user);
-    console.log("stats of codechef", stats);
+    // console.log("stats of codechef", stats);
     if (stats.status === "OK") {
-      return res.send(stats);
+      return res.send(
+        getSuccessSvg({ stats, username: user, theme: userTheme })
+      );
     } else {
       // user does not exist
-      return res.send("User does not exist");
+      return res.send(getErrorSvg("User Not Exist"));
     }
   } catch {
     // unknown backend error
-    return res.send("Backend Error");
+    return res.send(getErrorSvg("backend error occurred"));
   }
 };
