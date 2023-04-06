@@ -23,7 +23,7 @@ const mainTheme = createMuiTheme({
 
 const useStyles = makeStyles(() => ({
   root: {
-    marginTop: "30px",
+    marginTop: "160px",
   },
 }));
 

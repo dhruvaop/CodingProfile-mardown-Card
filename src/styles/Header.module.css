@@ -1,0 +1,40 @@
+.Container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  color: #1f3d75;
+  font-size: 20px;
+  box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 20%);
+  /* z-index: 999; */
+  border-radius: 30px;
+  background-color: white;
+}
+
+.Container div {
+  cursor: pointer;
+}
+
+.main {
+  position: absolute;
+  top: 5%;
+  left: 25%;
+  width: 50vw;
+}
+
+@media (max-width: 768px) {
+  .Container {
+    flex-direction: column;
+    border-radius: 10px;
+    width: 90vw;
+    justify-content: center;
+    row-gap: 20px;
+    background-color: white;
+  }
+  .main {
+    top: 14.5%;
+    left: 5%;
+  }
+}
