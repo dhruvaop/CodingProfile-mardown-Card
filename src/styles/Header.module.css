@@ -5,12 +5,22 @@
   justify-content: space-evenly;
   align-items: center;
   padding: 20px;
-  color: #1f3d75;
+  color: #9763f6;
   font-size: 20px;
-  box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 20%);
+  box-shadow: 2px 2px 2px 2px rgb(white / 20%);
   /* z-index: 999; */
   border-radius: 30px;
   background-color: white;
+}
+
+.Link {
+  padding-bottom: 2px;
+}
+
+.Link:hover {
+  transition: all;
+  animation-duration: 2ms;
+  border-bottom: #9763f6 solid 2px;
 }
 
 .Container div {
