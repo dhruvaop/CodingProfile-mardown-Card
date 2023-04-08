@@ -16,8 +16,8 @@ import BorderColorIcon from "@material-ui/icons/BorderColor";
 import IconButton from "./IconButton";
 import { themes } from "../static/theme";
 
-const ENDPOINT = "https://coding-profile.vercel.app";
-// const ENDPOINT = "http://localhost:3000";
+// const ENDPOINT = "https://coding-profile.vercel.app";
+const ENDPOINT = "http://localhost:3000";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
