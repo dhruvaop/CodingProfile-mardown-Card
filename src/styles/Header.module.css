@@ -36,15 +36,16 @@
 
 @media (max-width: 768px) {
   .Container {
-    flex-direction: column;
+    flex-direction: row;
     border-radius: 10px;
     width: 90vw;
     justify-content: center;
-    row-gap: 20px;
+    column-gap: 20px;
+    font-size: 12px;
     background-color: white;
   }
   .main {
-    top: 14.5%;
+    top: 2%;
     left: 5%;
   }
 }

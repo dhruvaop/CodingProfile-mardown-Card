@@ -2,13 +2,9 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Grid,
-  Paper,
-  TextField,
-  MenuItem,
-  Typography,
-} from "@material-ui/core";
+import { Grid, MenuItem, Typography } from "@material-ui/core";
+import { Paper, TextField } from "@mui/material";
+import styles from "../src/styles/Home.module.css";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import BubbleChartIcon from "@material-ui/icons/BubbleChart";
 import ImageIcon from "@material-ui/icons/Image";
@@ -16,15 +12,15 @@ import BorderColorIcon from "@material-ui/icons/BorderColor";
 import IconButton from "./IconButton";
 import { themes } from "../static/theme";
 
-const ENDPOINT = "https://coding-profile.vercel.app";
-// const ENDPOINT = "http://localhost:3000";
+// const ENDPOINT = "https://coding-profile.vercel.app";
+const ENDPOINT = "http://localhost:3000";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     margin: "auto",
     backgroundColor: theme.palette.info.light,
     height: "100%",
-    width: "50%",
+
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -156,7 +152,12 @@ function Content(): JSX.Element {
 
   return (
     <Grid item>
-      <Paper elevation={12} className={classes.paper}>
+      <Paper
+        className={classes.paper}
+        sx={{
+          width: { xs: "90%", md: "50%" },
+        }}
+      >
         <div className={classes.colSection}>
           <Typography
             color="primary"
@@ -187,7 +188,9 @@ function Content(): JSX.Element {
             autoComplete="off"
             label="Username"
             placeholder="Username"
-            style={{ width: "20rem" }}
+            sx={{
+              width: { lg: "20rem" },
+            }}
             inputRef={nameRef}
             InputLabelProps={{
               shrink: true,

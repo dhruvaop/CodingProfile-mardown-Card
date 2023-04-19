@@ -30,15 +30,6 @@ const Header = () => {
           <div>
             <Link
               className={styles.Link}
-              href="mailto:pranshujain0111@gmail.com"
-              target="_blank"
-            >
-              Reach Me
-            </Link>
-          </div>
-          <div>
-            <Link
-              className={styles.Link}
               href="https://pranshuportfolio.netlify.app/"
               target="_blank"
             >

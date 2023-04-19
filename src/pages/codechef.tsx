@@ -29,6 +29,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Codechef() {
+  console.log(2 + 3);
   const classes = useStyles();
   return (
     <>
