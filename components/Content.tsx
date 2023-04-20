@@ -18,8 +18,9 @@ const ENDPOINT = "https://coding-profile.vercel.app";
 const useStyles = makeStyles((theme) => ({
   paper: {
     margin: "auto",
-    backgroundColor: "black",
+    backgroundColor: theme.palette.info.light,
     height: "100%",
+
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -155,7 +156,6 @@ function Content(): JSX.Element {
         className={classes.paper}
         sx={{
           width: { xs: "90%", md: "50%" },
-          backgroundColor: "black",
         }}
       >
         <div className={classes.colSection}>
