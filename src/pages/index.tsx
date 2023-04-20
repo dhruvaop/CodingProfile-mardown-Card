@@ -29,6 +29,7 @@ const useStyles = makeStyles(() => ({
   root: {
     marginTop: "160px",
     paddingBottom: "160px",
+    backgroundColor: "black",
   },
 }));
 

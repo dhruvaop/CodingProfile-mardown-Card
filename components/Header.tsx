@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: "black" }}>
       <div className={styles.main}>
         <div className={styles.Container}>
           <div>

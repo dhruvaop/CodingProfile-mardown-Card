@@ -2,13 +2,8 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Grid,
-  Paper,
-  TextField,
-  MenuItem,
-  Typography,
-} from "@material-ui/core";
+import { Grid, MenuItem, Typography } from "@material-ui/core";
+import { Paper, TextField } from "@mui/material";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import BubbleChartIcon from "@material-ui/icons/BubbleChart";
 import ImageIcon from "@material-ui/icons/Image";
@@ -24,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
     backgroundColor: theme.palette.info.light,
     height: "100%",
-    width: "50%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -156,7 +150,13 @@ function CodeforcesContent(): JSX.Element {
 
   return (
     <Grid item>
-      <Paper elevation={12} className={classes.paper}>
+      <Paper
+        elevation={12}
+        className={classes.paper}
+        sx={{
+          width: { xs: "90%", md: "50%" },
+        }}
+      >
         <div className={classes.colSection}>
           <Typography
             color="primary"
@@ -187,7 +187,9 @@ function CodeforcesContent(): JSX.Element {
             autoComplete="off"
             label="Username"
             placeholder="Username"
-            style={{ width: "20rem" }}
+            sx={{
+              width: { lg: "20rem" },
+            }}
             inputRef={nameRef}
             InputLabelProps={{
               shrink: true,
