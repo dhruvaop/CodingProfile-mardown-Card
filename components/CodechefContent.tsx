@@ -224,7 +224,6 @@ function CodechefContent(): JSX.Element {
               className: classes.textInput,
               style: {
                 color: "white",
-                border: "1px solid white",
               },
             }}
             sx={{

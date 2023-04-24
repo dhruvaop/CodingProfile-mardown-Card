@@ -199,14 +199,12 @@ function CodeforcesContent(): JSX.Element {
               className: classes.textFieldLabel,
               style: {
                 color: "white",
-                border: "1px solid white",
               },
             }}
             InputProps={{
               className: classes.textInput,
               style: {
                 color: "white",
-                border: "1px solid white",
               },
             }}
           />
@@ -220,12 +218,10 @@ function CodeforcesContent(): JSX.Element {
               className: classes.textFieldLabel,
               style: {
                 color: "white",
-                border: "1px solid white",
               },
             }}
             sx={{
               color: "white",
-              border: "1px solid white",
             }}
             InputProps={{
               className: classes.textInput,
