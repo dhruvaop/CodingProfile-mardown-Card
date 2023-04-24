@@ -197,9 +197,17 @@ function CodeforcesContent(): JSX.Element {
             InputLabelProps={{
               shrink: true,
               className: classes.textFieldLabel,
+              style: {
+                color: "white",
+                border: "1px solid white",
+              },
             }}
             InputProps={{
               className: classes.textInput,
+              style: {
+                color: "white",
+                border: "1px solid white",
+              },
             }}
           />
           <TextField
@@ -210,12 +218,20 @@ function CodeforcesContent(): JSX.Element {
             onChange={handleThemeChange}
             InputLabelProps={{
               className: classes.textFieldLabel,
+              style: {
+                color: "white",
+                border: "1px solid white",
+              },
             }}
             sx={{
               color: "white",
+              border: "1px solid white",
             }}
             InputProps={{
               className: classes.textInput,
+              style: {
+                color: "white",
+              },
             }}
             style={{ marginLeft: "30px" }}
           >

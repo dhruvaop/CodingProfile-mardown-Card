@@ -194,10 +194,12 @@ function Content(): JSX.Element {
             InputLabelProps={{
               shrink: true,
               className: classes.textFieldLabel,
+              style: { color: "white" },
             }}
             sx={{ input: { color: "white" } }}
             InputProps={{
               className: classes.textInput,
+              style: { color: "white" },
             }}
           />
           <TextField
@@ -208,9 +210,11 @@ function Content(): JSX.Element {
             onChange={handleThemeChange}
             InputLabelProps={{
               className: classes.textFieldLabel,
+              style: { color: "white" },
             }}
             InputProps={{
               className: classes.textInput,
+              style: { color: "white" },
             }}
             style={{ marginLeft: "30px", color: "white" }}
           >
