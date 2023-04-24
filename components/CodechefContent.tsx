@@ -191,6 +191,7 @@ function CodechefContent(): JSX.Element {
             placeholder="Username"
             sx={{
               width: { lg: "20rem" },
+              color: "white",
             }}
             inputRef={nameRef}
             InputLabelProps={{
@@ -212,6 +213,9 @@ function CodechefContent(): JSX.Element {
             }}
             InputProps={{
               className: classes.textInput,
+            }}
+            sx={{
+              color: "white",
             }}
             style={{ marginLeft: "30px" }}
           >

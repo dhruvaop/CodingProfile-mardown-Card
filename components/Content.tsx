@@ -191,6 +191,7 @@ function Content(): JSX.Element {
             placeholder="Username"
             sx={{
               width: { lg: "20rem" },
+              color: "white",
             }}
             inputRef={nameRef}
             InputLabelProps={{
@@ -213,7 +214,7 @@ function Content(): JSX.Element {
             InputProps={{
               className: classes.textInput,
             }}
-            style={{ marginLeft: "30px" }}
+            style={{ marginLeft: "30px", color: "white" }}
           >
             {Object.keys(themes).map((themeX) => {
               const key = themeX as keyof typeof themes;

@@ -191,6 +191,7 @@ function CodeforcesContent(): JSX.Element {
             placeholder="Username"
             sx={{
               width: { lg: "20rem" },
+              color: "white",
             }}
             inputRef={nameRef}
             InputLabelProps={{
@@ -209,6 +210,9 @@ function CodeforcesContent(): JSX.Element {
             onChange={handleThemeChange}
             InputLabelProps={{
               className: classes.textFieldLabel,
+            }}
+            sx={{
+              color: "white",
             }}
             InputProps={{
               className: classes.textInput,
