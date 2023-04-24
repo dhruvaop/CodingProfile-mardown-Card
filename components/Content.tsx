@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
     backgroundColor: theme.palette.info.light,
     height: "100%",
-
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -156,6 +155,7 @@ function Content(): JSX.Element {
         className={classes.paper}
         sx={{
           width: { xs: "90%", md: "50%" },
+          backgroundColor: "#191B21",
         }}
       >
         <div className={classes.colSection}>
