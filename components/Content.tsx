@@ -195,6 +195,7 @@ function Content(): JSX.Element {
               shrink: true,
               className: classes.textFieldLabel,
             }}
+            sx={{ input: { color: "white" } }}
             InputProps={{
               className: classes.textInput,
             }}
@@ -211,6 +212,7 @@ function Content(): JSX.Element {
             InputProps={{
               className: classes.textInput,
             }}
+            sx={{ input: { color: "white" } }}
             style={{ marginLeft: "30px", color: "white" }}
           >
             {Object.keys(themes).map((themeX) => {
