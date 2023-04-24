@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     display: "flex",
     flexDirection: "row",
+    color: "white",
   },
   textFieldLabel: {
     color: theme.palette.primary.main,
