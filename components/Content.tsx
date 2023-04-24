@@ -212,7 +212,6 @@ function Content(): JSX.Element {
             InputProps={{
               className: classes.textInput,
             }}
-            sx={{ input: { color: "white" } }}
             style={{ marginLeft: "30px", color: "white" }}
           >
             {Object.keys(themes).map((themeX) => {

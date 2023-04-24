@@ -191,7 +191,7 @@ function CodeforcesContent(): JSX.Element {
             placeholder="Username"
             sx={{
               width: { lg: "20rem" },
-              color: "white",
+              input: { color: "white" },
             }}
             inputRef={nameRef}
             InputLabelProps={{
