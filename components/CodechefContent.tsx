@@ -197,9 +197,15 @@ function CodechefContent(): JSX.Element {
             InputLabelProps={{
               shrink: true,
               className: classes.textFieldLabel,
+              style: {
+                color: "white",
+              },
             }}
             InputProps={{
               className: classes.textInput,
+              style: {
+                color: "white",
+              },
             }}
           />
           <TextField
@@ -210,9 +216,15 @@ function CodechefContent(): JSX.Element {
             onChange={handleThemeChange}
             InputLabelProps={{
               className: classes.textFieldLabel,
+              style: {
+                color: "white",
+              },
             }}
             InputProps={{
               className: classes.textInput,
+              style: {
+                color: "white",
+              },
             }}
             sx={{
               color: "white",
