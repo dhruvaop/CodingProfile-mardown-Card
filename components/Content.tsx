@@ -189,10 +189,6 @@ function Content(): JSX.Element {
             autoComplete="off"
             label="Username"
             placeholder="Username"
-            sx={{
-              width: { lg: "20rem" },
-              color: "white",
-            }}
             inputRef={nameRef}
             InputLabelProps={{
               shrink: true,
