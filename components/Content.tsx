@@ -156,6 +156,7 @@ function Content(): JSX.Element {
         sx={{
           width: { xs: "90%", md: "50%" },
           backgroundColor: "#191B21",
+          color: "white",
         }}
       >
         <div className={classes.colSection}>
