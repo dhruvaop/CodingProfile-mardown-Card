@@ -1,86 +1,102 @@
-/* eslint-disable react/no-danger */
+
 import React, { useState, useRef } from "react";
 import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
-import { Grid, MenuItem, Typography } from "@material-ui/core";
-import { Paper, TextField } from "@mui/material";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import BubbleChartIcon from "@material-ui/icons/BubbleChart";
-import ImageIcon from "@material-ui/icons/Image";
-import BorderColorIcon from "@material-ui/icons/BorderColor";
+import { Grid, MenuItem, Typography, Paper, TextField } from "@mui/material";
+import { makeStyles, createStyles } from "@mui/styles"; // Import makeStyles from @mui/styles
+import GitHubIcon from "@mui/icons-material/GitHub";
+import BubbleChartIcon from "@mui/icons-material/BubbleChart";
+import ImageIcon from "@mui/icons-material/Image";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 import IconButton from "./IconButton";
 import { themes } from "../static/theme";
 
-const ENDPOINT = "https://coding-profile.vercel.app";
-// const ENDPOINT = "http://localhost:3000";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    margin: "auto",
-    backgroundColor: theme.palette.info.light,
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    fontSize: theme.spacing(5),
-  },
-  successStatus: {
-    color: theme.palette.primary.main,
-  },
-  errorStatus: {
-    color: theme.palette.secondary.main,
-  },
-  colSection: {
-    padding: theme.spacing(2),
-    display: "flex",
-    flexDirection: "column",
-  },
-  rowSection: {
-    padding: theme.spacing(2),
-    display: "flex",
-    flexDirection: "row",
-  },
-  textFieldLabel: {
-    color: theme.palette.primary.main,
-    marginRight: "30px",
-  },
-  textInput: {
-    color: "white",
-  },
-}));
+
+//import { Paper, TextField } from "@mui/material";
+
+//const ENDPOINT = "https://coding-profile.vercel.app";
+const ENDPOINT = "http://localhost:3000";
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    paper: {
+      margin: "auto",
+      backgroundColor: theme.palette.info.light,
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: theme.spacing(2), // Added padding to align with other styles
+      color: "white",
+    },
+    text: {
+      fontSize: theme.spacing(5),
+    },
+    successStatus: {
+      color: theme.palette.primary.main,
+    },
+    errorStatus: {
+      color: theme.palette.secondary.main,
+    },
+    colSection: {
+      padding: theme.spacing(2),
+      display: "flex",
+      flexDirection: "column",
+    },
+    rowSection: {
+      padding: theme.spacing(2),
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    textFieldLabel: {
+      color: theme.palette.primary.main,
+      marginRight: theme.spacing(2),
+    },
+    textInput: {
+      color: "white",
+    },
+    link: {
+      color: theme.palette.primary.main,
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "underline",
+      },
+    },
+  })
+);
 
 function CodechefContent(): JSX.Element {
   const classes = useStyles();
 
   // Username
-  const nameRef = useRef("");
+  const nameRef = useRef<HTMLInputElement>(null); // Adjusted typing to HTMLInputElement
 
-  const getValue = (ref: React.MutableRefObject<string>): string => {
-    const cur = ref.current as unknown as HTMLTextAreaElement;
-    return cur.value;
+  const getValue = (ref: React.MutableRefObject<HTMLInputElement | null>): string => {
+    const cur = ref.current;
+    return cur ? cur.value : "";
   };
 
   // Theme
-  const [theme, setTheme] = useState("Light");
+  const [theme, setTheme] = useState<string>("Light");
 
   const handleThemeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { target } = event;
-    setTheme(target.value);
+    const { value } = event.target;
+    setTheme(value);
   };
 
   // Status
-  const [statusText, setStatusText] = useState("Status: awaiting generation");
+  const [statusText, setStatusText] = useState<string>("Status: Awaiting Generation...");
 
   // Action buttons
-  const [generated, setGenerated] = useState(false);
-  const [imgCopied, setImgCopied] = useState(false);
-  const [mdCopied, setMdcopied] = useState(false);
+  const [generated, setGenerated] = useState<boolean>(false);
+  const [imgCopied, setImgCopied] = useState<boolean>(false);
+  const [mdCopied, setMdcopied] = useState<boolean>(false);
 
   // Dynamic svg component
-  const [svg, setSvg] = useState("");
+  const [svg, setSvg] = useState<string>("");
 
   const resetStates = () => {
     setImgCopied(false);
@@ -92,7 +108,7 @@ function CodechefContent(): JSX.Element {
   // onClick function for git button
   const gitOnClick = () => {
     window.open(
-      "https://github.com/Pranshu321/coding-profiles",
+      "https://github.com/dhruvaop",
       "_blank",
       "noopener, noreferrer"
     );
@@ -106,7 +122,7 @@ function CodechefContent(): JSX.Element {
     const username = getValue(nameRef);
     // User did not enter username
     if (username === "") {
-      setStatusText("Status : please enter username above");
+      setStatusText("Status: please enter username above");
       return;
     }
 
@@ -120,11 +136,11 @@ function CodechefContent(): JSX.Element {
       .then((response) => {
         setSvg(response.data as string);
         setGenerated(true);
-        setStatusText("Status : successfully generated");
+        setStatusText("Status: successfully generated");
       })
       .catch(() => {
         setGenerated(false);
-        setStatusText(`Status : backend error occurred`);
+        setStatusText(`Status: backend error occurred`);
       });
   };
 
@@ -137,11 +153,11 @@ function CodechefContent(): JSX.Element {
     setImgCopied(true);
   };
 
-  // onClick function for copy markdwn button
+  // onClick function for copy markdown button
   const mdCopyOnClick = () => {
     const username = getValue(nameRef);
     const imgUrl = `${ENDPOINT}/api/check?username=${username}&theme=${theme}`;
-    const redirectUrl = "https://github.com/Pranshu321/coding-profiles";
+    const redirectUrl = "https://github.com/dhruvaop";
     navigator.clipboard.writeText(
       `[![${username}'s LeetCode Stats](${imgUrl})](${redirectUrl})`
     );
@@ -159,22 +175,43 @@ function CodechefContent(): JSX.Element {
           color: "white",
         }}
       >
+        {/* Font import */}
+        {/* <style>
+          {`
+            @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+          `}
+        </style> */}
         <div className={classes.colSection}>
-          <Typography
-            color="primary"
-            align="center"
-            variant="h2"
-            className={classes.text}
-          >
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
+
+           <img src="https://i.postimg.cc/xT2MK23Q/c5d9fc1e18bcf039f464c2ab6cfb3eb6-removebg-preview.png" alt="Code Chef Logo" style={{ height: '50px', marginRight: '10px' }} />
+           
+
+        
+        <Typography
+          color="primary"
+          align="center"
+          variant="h2"
+          className={classes.text}
+        >
             Codechef Stats
           </Typography>
+          </div>
           <Typography
             color="primary"
             align="center"
             variant="body2"
             style={{ marginTop: "10px", marginBottom: "10px" }}
           >
-            Made by Pranshu Jain with ❤️
+           Made by{" "}
+            <a
+              href="https://www.linkedin.com/in/dhruva-bhattacharya/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={classes.link}
+            >
+             Dhruva Bhattacharya with ❤️
+            </a>
           </Typography>
           <IconButton
             text="GitHub"
@@ -197,15 +234,11 @@ function CodechefContent(): JSX.Element {
             InputLabelProps={{
               shrink: true,
               className: classes.textFieldLabel,
-              style: {
-                color: "white",
-              },
+              style: { color: "white" },
             }}
             InputProps={{
               className: classes.textInput,
-              style: {
-                color: "white",
-              },
+              style: { color: "white" },
             }}
           />
           <TextField
@@ -216,20 +249,13 @@ function CodechefContent(): JSX.Element {
             onChange={handleThemeChange}
             InputLabelProps={{
               className: classes.textFieldLabel,
-              style: {
-                color: "white",
-              },
+              style: { color: "white" },
             }}
             InputProps={{
               className: classes.textInput,
-              style: {
-                color: "white",
-              },
+              style: { color: "white" },
             }}
-            sx={{
-              color: "white",
-            }}
-            style={{ marginLeft: "30px" }}
+            style={{ marginLeft: "30px", color: "white" }}
           >
             {Object.keys(themes).map((themeX) => {
               const key = themeX as keyof typeof themes;
@@ -277,3 +303,4 @@ function CodechefContent(): JSX.Element {
 }
 
 export default CodechefContent;
+

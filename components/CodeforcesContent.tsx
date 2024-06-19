@@ -1,18 +1,21 @@
 /* eslint-disable react/no-danger */
 import React, { useState, useRef } from "react";
 import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
-import { Grid, MenuItem, Typography } from "@material-ui/core";
-import { Paper, TextField } from "@mui/material";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import BubbleChartIcon from "@material-ui/icons/BubbleChart";
-import ImageIcon from "@material-ui/icons/Image";
-import BorderColorIcon from "@material-ui/icons/BorderColor";
+//import { makeStyles } from "@mui/styles";
+import { makeStyles, createStyles } from "@mui/styles";
+//import { makeStyles } from "@material-ui/core/styles";
+import { Grid, MenuItem, Typography, Paper, TextField } from "@mui/material";
+
+//import { Paper, TextField } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import BubbleChartIcon from "@mui/icons-material/BubbleChart";
+import ImageIcon from "@mui/icons-material/Image";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 import IconButton from "./IconButton";
 import { themes } from "../static/theme";
 
-const ENDPOINT = "https://coding-profile.vercel.app";
-// const ENDPOINT = "http://localhost:3000";
+//const ENDPOINT = "https://coding-profile.vercel.app";
+ const ENDPOINT = "http://localhost:3000";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -72,7 +75,7 @@ function CodeforcesContent(): JSX.Element {
   };
 
   // Status
-  const [statusText, setStatusText] = useState("Status: awaiting generation");
+  const [statusText, setStatusText] = useState("Status: Awaiting Generation...");
 
   // Action buttons
   const [generated, setGenerated] = useState(false);
@@ -92,7 +95,7 @@ function CodeforcesContent(): JSX.Element {
   // onClick function for git button
   const gitOnClick = () => {
     window.open(
-      "https://github.com/Pranshu321/coding-profiles",
+      "https://github.com/dhruvaop",
       "_blank",
       "noopener, noreferrer"
     );
@@ -141,7 +144,7 @@ function CodeforcesContent(): JSX.Element {
   const mdCopyOnClick = () => {
     const username = getValue(nameRef);
     const imgUrl = `${ENDPOINT}/api/codeforces?username=${username}&theme=${theme}`;
-    const redirectUrl = "https://github.com/Pranshu321/coding-profiles";
+    const redirectUrl = "https://github.com/dhruvaop";
     navigator.clipboard.writeText(
       `[![${username}'s LeetCode Stats](${imgUrl})](${redirectUrl})`
     );
@@ -159,22 +162,38 @@ function CodeforcesContent(): JSX.Element {
           color: "white",
         }}
       >
+        
         <div className={classes.colSection}>
-          <Typography
-            color="primary"
-            align="center"
-            variant="h2"
-            className={classes.text}
-          >
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
+
+           <img src="https://i.postimg.cc/J4GK2mBk/free-code-forces-3521352-2944796.png" alt="Code Forces Logo" style={{ height: '50px', marginRight: '10px' }} />
+           
+
+        
+        <Typography
+          color="primary"
+          align="center"
+          variant="h2"
+          className={classes.text}
+        >
             Codeforces Stats
           </Typography>
+          </div>
           <Typography
             color="primary"
             align="center"
             variant="body2"
             style={{ marginTop: "10px", marginBottom: "10px" }}
           >
-            Made by Pranshu Jain with ❤️
+            Made by{" "}
+            <a
+              href="https://www.linkedin.com/in/dhruva-bhattacharya/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={classes.link}
+            >
+             Dhruva Bhattacharya with ❤️
+            </a>
           </Typography>
           <IconButton
             text="GitHub"

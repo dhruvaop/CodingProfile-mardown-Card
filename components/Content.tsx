@@ -1,19 +1,28 @@
-/* eslint-disable react/no-danger */
+
 import React, { useState, useRef } from "react";
 import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
-import { Grid, MenuItem, Typography } from "@material-ui/core";
-import { Paper, TextField } from "@mui/material";
-import styles from "../src/styles/Home.module.css";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import BubbleChartIcon from "@material-ui/icons/BubbleChart";
-import ImageIcon from "@material-ui/icons/Image";
-import BorderColorIcon from "@material-ui/icons/BorderColor";
+import { styled } from "@mui/system";
+import { Grid, MenuItem, Typography, Paper, TextField } from "@mui/material";
+import { makeStyles } from "@mui/styles"; // Import makeStyles from @mui/styles
+import { GitHub as GitHubIcon, BubbleChart as BubbleChartIcon, Image as ImageIcon, BorderColor as BorderColorIcon } from "@mui/icons-material";
 import IconButton from "./IconButton";
 import { themes } from "../static/theme";
 
-const ENDPOINT = "https://coding-profile.vercel.app";
-// const ENDPOINT = "http://localhost:3000";
+//const ENDPOINT = "https://coding-profile.vercel.app";
+const ENDPOINT = "http://localhost:3000";
+
+
+
+const Root = styled("div")(({ theme }) => ({
+  margin: "auto",
+  backgroundColor: theme.palette.info.light,
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "white",
+}));
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -24,6 +33,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    padding: theme.spacing(2), // Added padding to align with other styles
+    color: "white",
   },
   text: {
     fontSize: theme.spacing(5),
@@ -55,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Content(): JSX.Element {
-  const classes = useStyles();
+  const classes = useStyles(); // Use useStyles without passing any argument
 
   // Username
   const nameRef = useRef("");
@@ -74,7 +85,7 @@ function Content(): JSX.Element {
   };
 
   // Status
-  const [statusText, setStatusText] = useState("Status: awaiting generation");
+  const [statusText, setStatusText] = useState("Status: Awaiting Generation...");
 
   // Action buttons
   const [generated, setGenerated] = useState(false);
@@ -94,7 +105,7 @@ function Content(): JSX.Element {
   // onClick function for git button
   const gitOnClick = () => {
     window.open(
-      "https://github.com/Pranshu321/coding-profiles",
+      "https://github.com/dhruvaop",
       "_blank",
       "noopener, noreferrer"
     );
@@ -139,11 +150,11 @@ function Content(): JSX.Element {
     setImgCopied(true);
   };
 
-  // onClick function for copy markdwn button
+  // onClick function for copy markdown button
   const mdCopyOnClick = () => {
     const username = getValue(nameRef);
     const imgUrl = `${ENDPOINT}/api?username=${username}&theme=${theme}`;
-    const redirectUrl = "https://github.com/Pranshu321/coding-profiles";
+    const redirectUrl = "https://github.com/dhruvaop";
     navigator.clipboard.writeText(
       `[![${username}'s LeetCode Stats](${imgUrl})](${redirectUrl})`
     );
@@ -161,21 +172,40 @@ function Content(): JSX.Element {
         }}
       >
         <div className={classes.colSection}>
-          <Typography
-            color="primary"
-            align="center"
-            variant="h2"
-            className={classes.text}
-          >
-            LeetCode Stats
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
+
+           <img src="https://i.postimg.cc/yNFLyP3p/Leet-Code-Logo-1.png" alt="LeetCode Logo" style={{ height: '50px', marginRight: '10px' }} />
+
+      <Typography
+        color="primary"
+        align="center"
+        variant="h2"
+        className={classes.text}
+      >
+          LeetCode Stats
           </Typography>
+          </div>
           <Typography
             color="primary"
             align="center"
             variant="body2"
             style={{ marginTop: "10px", marginBottom: "10px" }}
           >
-            Made by Pranshu Jain with ❤️
+            {/* Font import */}
+        {/* <style>
+          {`
+            @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+          `}
+        </style> */}
+           Made by{" "}
+            <a
+              href="https://www.linkedin.com/in/dhruva-bhattacharya/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={classes.link}
+            >
+             Dhruva Bhattacharya with ❤️
+            </a>
           </Typography>
           <IconButton
             text="GitHub"

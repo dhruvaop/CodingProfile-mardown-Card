@@ -1,17 +1,50 @@
+/* Replace <uniquifier> with a unique and descriptive class name */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+.source-code-pro {
+  font-family: 'Source Code Pro', monospace;
+  /* font-family: "Source Code Pro", monospace; */
+  font-optical-sizing: auto;
+  font-weight: 400; /* Replace <weight> with a valid font weight (200-900) */
+  font-style: normal;
+}
+
 .inside__footer {
+  font-family: 'Source Code Pro', monospace;
   padding: 20px;
+  
   max-width: 960px;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .copyright {
   text-align: left;
   color: #9763f6;
   font-size: 18px;
   font-weight: 600;
-  text-align: center;
+  text-align: center; /* Duplicate text-align property removed */
   order: 1;
   margin-bottom: 0;
 }
+
+.footerContent {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.authorName {
+  font-weight: bold;
+  color: #cc1818;
+}
+
+

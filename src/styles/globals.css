@@ -1,14 +1,22 @@
+/* Font styling for Source Code Pro */
+.source-code-pro {
+  font-family: 'Source Code Pro', monospace;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Adjust the font weight as needed (200-900) */
+  font-style: normal;
+}
+
+/* Root variables for color and gradients */
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --font-mono: 'Source Code Pro', ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --foreground-rgb: 0, 0, 0; /* Default foreground color */
+  --background-start-rgb: 214, 219, 220; /* Default background start color */
+  --background-end-rgb: 255, 255, 255; /* Default background end color */
 
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
+  /* Primary glow gradient */
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
     #16abff33 0deg,
@@ -17,11 +25,13 @@
     #0071ff33 160deg,
     transparent 360deg
   );
+  /* Secondary glow gradient */
   --secondary-glow: radial-gradient(
     rgba(255, 255, 255, 1),
     rgba(255, 255, 255, 0)
   );
 
+  /* Tile background and border gradients */
   --tile-start-rgb: 239, 245, 249;
   --tile-end-rgb: 228, 232, 233;
   --tile-border: conic-gradient(
@@ -34,19 +44,23 @@
     #00000080
   );
 
+  /* Callout and card colors */
   --callout-rgb: 238, 240, 241;
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 }
 
+/* Dark mode media query */
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 255, 255, 255; /* Adjust foreground color for dark mode */
+    --background-start-rgb: 0, 0, 0; /* Adjust background start color for dark mode */
+    --background-end-rgb: 0, 0, 0; /* Adjust background end color for dark mode */
 
+    /* Updated primary glow gradient for dark mode */
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    /* Updated secondary glow gradient for dark mode */
     --secondary-glow: linear-gradient(
       to bottom right,
       rgba(1, 65, 255, 0),
@@ -54,6 +68,7 @@
       rgba(1, 65, 255, 0.3)
     );
 
+    /* Updated tile background and border gradients for dark mode */
     --tile-start-rgb: 2, 13, 46;
     --tile-end-rgb: 2, 5, 19;
     --tile-border: conic-gradient(
@@ -66,6 +81,7 @@
       #ffffff80
     );
 
+    /* Updated callout and card colors for dark mode */
     --callout-rgb: 20, 20, 20;
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
@@ -73,47 +89,43 @@
   }
 }
 
+/* Global box-sizing and reset */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+/* Body styles */
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: black;
+  background-color: black; /* Set the background color for the entire body */
+  color: rgb(var(--foreground-rgb)); /* Set the text color */
+  font-family: 'Source Code Pro', var(--font-mono); /* Use the Source Code Pro font */
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
-}
-
+/* Anchor tag styles */
 a {
   color: inherit;
   text-decoration: none;
 }
 
+/* Dark mode color scheme */
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
 }
 
+/* Footer styles */
 footer {
-  /*Remove "fixed, left, and bottom" if you want it to scroll naturally to the bottom*/
-  position: fixed;
+  position: fixed; /* Fixed position at the bottom of the viewport */
   left: 0;
   bottom: 0;
-  /*-------*/
   width: 100%;
-  background-color: black;
+  background-color: black; /* Background color for the footer */
   cursor: default;
+  font-family: 'Source Code Pro', var(--font-mono); /* Use the Source Code Pro font */
 }
